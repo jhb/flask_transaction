@@ -1,5 +1,7 @@
 """
-A simple transactional file writer
+A simple transactional file writer.
+
+An adaption of the MockDataManager in https://repozetm2.readthedocs.io/en/latest/
 
 Lets do some imports first
     >>> import transaction
