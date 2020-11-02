@@ -19,16 +19,17 @@ setup(
     description='transaction for flask',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    py_modules=['flask_transaction'],
+    # py_modules=['flask_transaction','filedm'],
     # if you would be using a package instead use packages instead
     # of py_modules:
-    # packages=['flask_transaction'],
+    packages=['flask_transaction'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',
     install_requires=[
         'Flask',
-        'transaction'
+        'transaction',
+        'pytest'
     ],
     classifiers=[
         'Environment :: Web Environment',
