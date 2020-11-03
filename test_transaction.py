@@ -7,11 +7,12 @@ import os
 import tempfile
 
 app = Flask(__name__)
+app.config['TESTING'] = True
 init_transaction(app)
 
 
-@app.route('/fileaction')
-def fileaction():
+@app.route('/action')
+def action():
     text1 = request.values['text1']
     text2 = request.values['text2']
     fail = request.values.get('fail',None) is not None
@@ -28,7 +29,7 @@ def fileaction():
 def test_good_transaction():
     basedir = None
     with app.test_client() as client:
-        client.get('/fileaction?text1=foo&text2=foo')
+        client.get('/action?text1=foo&text2=foo')
         basedir = g.basedir
     contents = os.listdir(os.path.normpath(basedir.name))
     assert sorted(contents) == ['bar1.txt', 'foo1.txt']
@@ -36,7 +37,7 @@ def test_good_transaction():
 def test_bad_transaction():
     basedir = None
     with app.test_client() as client:
-        client.get('/fileaction?text1=foo&text2=foo&fail=1')
+        client.get('/action?text1=foo&text2=foo&fail=1')
         basedir = g.basedir
     contents = os.listdir(os.path.normpath(basedir.name))
     assert sorted(contents) == []

@@ -29,7 +29,7 @@ setup(
     install_requires=[
         'Flask',
         'transaction',
-        'pytest'
+        'pytest',
     ],
     classifiers=[
         'Environment :: Web Environment',
