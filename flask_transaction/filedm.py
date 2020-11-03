@@ -1,5 +1,5 @@
 """
-A simple transactional file writer.
+A simple 2pc transactional file writer which supports the transaction module.
 
 An adaption of the MockDataManager in https://repozetm2.readthedocs.io/en/latest/
 

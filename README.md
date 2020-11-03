@@ -13,9 +13,10 @@ Install:
 
 To use:
 
-    >>> app = object() #would be the real flask app
+    >>> from flask import Flask
+    >>> app = Flask(__name__) #would be the real flask app
     >>> import flask_transaction
-    >>> flask_transaction.init_app(app)
+    >>> flask_transaction.init_transaction(app)
 
 The transaction is automatically commited, unless there is an exception, or the transaction is
 doomed.
