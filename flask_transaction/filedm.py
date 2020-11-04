@@ -48,6 +48,8 @@ Neiter file3 or file4 were created
 import tempfile
 import os
 
+class ForcedFail(ValueError):
+    pass
 
 class FileDM:
 

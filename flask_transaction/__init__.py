@@ -32,9 +32,9 @@ def teardown(error):
         try:
             if debug: print('commit')
             g.tm.commit()
-        except Exception as e:
+        except ValueError as e:
             if debug: print('abort after commit')
-            g.tm.abort()
+            #g.tm.abort()
     else:
         if debug: print('abort')
         g.tm.abort()
