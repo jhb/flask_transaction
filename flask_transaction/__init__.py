@@ -3,9 +3,12 @@ from flask import g, Flask, current_app
 from werkzeug.local import LocalProxy
 from flask import request_tearing_down
 
+debug = 0
 
 def get_tm():
     if 'tm' not in g:
+        if debug:
+            print('creating transactionmanager')
         g.tm = TransactionManager()
     return g.tm
 
@@ -17,11 +20,13 @@ def get_dms():
 
 
 def before():
+    if debug:
+        print('before')
     get_tm() #initialize tm
 
 #def teardown(*args,exc=None,**kwargs):
 def teardown(error):
-    debug = 0
+
     if debug: print('in teardown')
     #print(repr(exc))
     if debug: print('the error:', error)

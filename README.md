@@ -4,8 +4,8 @@ Flask-Transaction
 
 
 This package provides basic transaction support to flask, using zopes
-[transaction package](https://transaction.readthedocs.io/en/latest/) . We use a context local transaction manager, and commit
-at the end of the request.
+[transaction package](https://transaction.readthedocs.io/en/latest/). 
+We use a context local transaction manager, and commit at the end of the request.
 
 Install:
 
