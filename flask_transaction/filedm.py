@@ -75,7 +75,7 @@ class FileDM:
 
     def commit(self, transaction):
         fd, self.tempfn = tempfile.mkstemp()
-        with open(self.tempfn, 'w') as temp:
+        with open(self.tempfn, 'wb') as temp:
             temp.write(self.data)
             temp.flush()
         os.close(fd)
@@ -83,13 +83,13 @@ class FileDM:
     def tpc_vote(self, transaction):
         if not os.path.exists(self.tempfn):
             raise ValueError('%s doesnt exist' % self.tempfn)
-        if os.path.exists(self.path):
-            raise ValueError('file already exists')
+        # if os.path.exists(self.path):
+        #     raise ValueError('file already exists')
         if self.fail:
             raise ValueError('we were supposed to fail')
 
     def tpc_finish(self, transaction):
-        os.rename(self.tempfn, self.path)
+        os.replace(self.tempfn, self.path)
 
     def tpc_abort(self, transaction):
         try:
