@@ -33,16 +33,17 @@ def teardown(error):
     # print(repr(args))
     # print(repr(kwargs))
 
-    if error is None:
-        try:
-            if debug: print('commit')
-            g.tm.commit()
-        except ValueError as e:
-            if debug: print('abort after commit', e)
-            #g.tm.abort()
-    else:
-        if debug: print('abort')
-        g.tm.abort()
+    # if error is None:
+    #     try:
+    #         if debug: print('commit')
+    #         if not g.tm.isDoomed():
+    #             g.tm.commit()
+    #     except ValueError as e:
+    #         if debug: print('abort after commit', e)
+    #         #g.tm.abort()
+    # else:
+    #     if debug: print('abort')
+    #     g.tm.abort()
 
     if 'dms' in g:
         for k, v in g.dms.items():
